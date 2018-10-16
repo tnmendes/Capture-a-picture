@@ -7,30 +7,40 @@
 //
 
 import UIKit
+import AVFoundation
 
-class WellcomeViewController: UIViewController {
+class WellcomeViewController: GenericViewController<WellcomeView> {
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = UIColor.blue
-        
+        contentView.button.addTarget(self, action: #selector(self.startTapped), for: .touchUpInside)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @objc func startTapped() {
+        
+        AVCaptureDevice.requestAccess(for: AVMediaType.video) { response in
+            
+            if response { //access granted
+                
+                DispatchQueue.main.async {
+
+                    let vc = CameraViewController()
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            } else {
+                
+                let alertController = UIAlertController(title: "Error", message: "This app need the access to Camera", preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "OK", style: .default, handler: { (alert) in
+                })
+                alertController.addAction(defaultAction)
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
 }

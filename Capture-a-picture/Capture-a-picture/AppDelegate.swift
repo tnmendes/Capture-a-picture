@@ -25,13 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .forEach { $0.execute() }
         
         return true
-        
-        
-        window = UIWindow(frame: UIScreen.main.bounds)
-        let homeViewController = WellcomeViewController()
-        window!.rootViewController = homeViewController
-        window!.makeKeyAndVisible()
-        return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
