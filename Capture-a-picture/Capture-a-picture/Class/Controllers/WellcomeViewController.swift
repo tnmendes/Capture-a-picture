@@ -32,11 +32,7 @@ class WellcomeViewController: GenericViewController<WellcomeView> {
                 }
             } else {
                 
-                let alertController = UIAlertController(title: "Error", message: "This app need the access to Camera", preferredStyle: .alert)
-                let defaultAction = UIAlertAction(title: "OK", style: .default, handler: { (alert) in
-                })
-                alertController.addAction(defaultAction)
-                self.present(alertController, animated: true, completion: nil)
+                self.showAlertError(message: "This app need the access to Camera")
             }
         }
     }

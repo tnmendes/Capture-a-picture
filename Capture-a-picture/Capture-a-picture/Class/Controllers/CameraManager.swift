@@ -75,6 +75,12 @@ class CameraManager: NSObject {
         photoSettings.flashMode = .auto
         capturePhotoOutput.capturePhoto(with: photoSettings, delegate: self)
     }
+    
+    
+    public func didLayout(){
+        
+        self.videoPreviewLayer?.frame = (self.delegate?.cameraPreviewView().bounds)!
+    }
 }
 
 

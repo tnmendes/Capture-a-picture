@@ -24,6 +24,7 @@
 		C7310725217697590036F1AF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7310724217697590036F1AF /* NetworkManager.swift */; };
 		C7310727217697FE0036F1AF /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7310726217697FE0036F1AF /* Configuration.swift */; };
 		C731072A2176A2000036F1AF /* Extension+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73107292176A2000036F1AF /* Extension+UIImage.swift */; };
+		C731072C2177F9130036F1AF /* SelfieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C731072B2177F9130036F1AF /* SelfieViewController.swift */; };
 		DF0DA0AB4B9AEB5B1B25AD3E /* Pods_Capture_a_picture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218B088012B278AB9CC78607 /* Pods_Capture_a_picture.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		C7310724217697590036F1AF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		C7310726217697FE0036F1AF /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		C73107292176A2000036F1AF /* Extension+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImage.swift"; sourceTree = "<group>"; };
+		C731072B2177F9130036F1AF /* SelfieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieViewController.swift; sourceTree = "<group>"; };
 		DAF874CA0CB334F33DF698C2 /* Pods-Capture-a-picture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capture-a-picture.release.xcconfig"; path = "Pods/Target Support Files/Pods-Capture-a-picture/Pods-Capture-a-picture.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,6 +142,7 @@
 				C731071721753D0B0036F1AF /* CameraManager.swift */,
 				C731071B21765AD50036F1AF /* CameraManagerDelegate.swift */,
 				C7310719217540420036F1AF /* CameraViewController.swift */,
+				C731072B2177F9130036F1AF /* SelfieViewController.swift */,
 				C731071F21768AAC0036F1AF /* FinishViewController.swift */,
 			);
 			path = Controllers;
@@ -321,6 +324,7 @@
 				C731071E21765F960036F1AF /* CameraView.swift in Sources */,
 				C731072A2176A2000036F1AF /* Extension+UIImage.swift in Sources */,
 				C7310725217697590036F1AF /* NetworkManager.swift in Sources */,
+				C731072C2177F9130036F1AF /* SelfieViewController.swift in Sources */,
 				C731070F2173FD7D0036F1AF /* InitializeCommands.swift in Sources */,
 				C731071121751B260036F1AF /* WellcomeView.swift in Sources */,
 				C731071A217540420036F1AF /* CameraViewController.swift in Sources */,

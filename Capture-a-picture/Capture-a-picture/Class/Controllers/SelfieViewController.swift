@@ -1,34 +1,31 @@
 //
-//  CameraViewController.swift
+//  SelfieViewController.swift
 //  Capture-a-picture
 //
-//  Created by Tiago Mendes on 15/10/2018.
+//  Created by Tiago Mendes on 18/10/2018.
 //  Copyright © 2018 Tiago Mendes. All rights reserved.
 //
 
 import UIKit
 
-class CameraViewController: GenericViewController<CameraView> {
+class SelfieViewController: GenericViewController<CameraView> {
     
     var cameraManager: CameraManager?
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let value = UIInterfaceOrientation.landscapeRight.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
         
         self.cameraManager = CameraManager(delegate: self)
         self.cameraManager?.initialized()
         contentView.captureButton.addTarget(self, action: #selector(self.takePhotoTapped), for: .touchUpInside)
     }
     
-
-    override func orientation() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.landscapeRight
-    }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        self.showAlertMessage(title: "Take a selfie", message: "This is the Last step")
+    }
     
     override func viewDidLayoutSubviews() {
         
@@ -39,21 +36,20 @@ class CameraViewController: GenericViewController<CameraView> {
     @objc func takePhotoTapped() {
         
         contentView.captureButton.isEnabled = false
-        navigateToSelfie()
-        //self.cameraManager?.takePhoto()
+        self.cameraManager?.takePhoto()
     }
     
     
-    func navigateToSelfie() {
+    func navigateToFinish() {
         
-        let vc = SelfieViewController()
+        let vc = FinishViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
 
 
-extension CameraViewController: CameraManagerDelegate{
+extension SelfieViewController: CameraManagerDelegate{
     
     
     func cameraPreviewView() -> UIView {
@@ -71,8 +67,13 @@ extension CameraViewController: CameraManagerDelegate{
                 
                 if(response){
                     print("Done")
+                    self.navigateToFinish()
                 }else{
-                    print("error")
+                    
+                    DispatchQueue.main.async {
+                        self.contentView.captureButton.isEnabled = true
+                        self.showAlertError(message: "Please take another photo")
+                    }
                 }
             })
         }

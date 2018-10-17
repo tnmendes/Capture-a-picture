@@ -23,14 +23,12 @@ class NetworkManager {
         }, to: Configuration.kBucket()) { (result) in
             
             switch result {
-            case .success(let upload, _, _):
-                
-                upload.responseJSON { response in
-                    print(response.result.value ?? "")
-                }
+            case .success(_, _, _):
+
                 completionHandler(true)
                 break
             case .failure(let encodingError):
+                
                 print(encodingError)
                 completionHandler(false)
                 break
