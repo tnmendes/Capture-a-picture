@@ -27,12 +27,46 @@ public class GenericViewController<View: GenericView>: UIViewController {
     
     
     public override func loadView() {
+        
         self.navigationController?.setNavigationBarHidden(hideNavigationBar(), animated: false)
         view = View()
     }
     
     
-    func hideNavigationBar() -> Bool {
+    public override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        setInterfaceOrientations()
+
+    }
+    
+    
+    internal func hideNavigationBar() -> Bool {
         return true
     }
+    
+    
+    internal func orientation() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+    
+    
+    private func setInterfaceOrientations() {
+    
+        let restricRotation = (UIApplication.shared.delegate as! AppDelegate).restrictRotation
+        let newOrientation = orientation()
+        if(restricRotation == newOrientation){
+            return //nothing to do here
+        }
+        
+        (UIApplication.shared.delegate as! AppDelegate).restrictRotation = newOrientation
+        let value = newOrientation.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+    }
+    
+    
+    
+    
+    
+
 }

@@ -13,6 +13,17 @@
 		C731070A2173FA1B0036F1AF /* WellcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73107092173FA1B0036F1AF /* WellcomeViewController.swift */; };
 		C731070D2173FD460036F1AF /* StartupCommandsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C731070C2173FD460036F1AF /* StartupCommandsBuilder.swift */; };
 		C731070F2173FD7D0036F1AF /* InitializeCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = C731070E2173FD7D0036F1AF /* InitializeCommands.swift */; };
+		C731071121751B260036F1AF /* WellcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C731071021751B260036F1AF /* WellcomeView.swift */; };
+		C731071421751E510036F1AF /* GenericView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C731071321751E510036F1AF /* GenericView.swift */; };
+		C7310716217524CD0036F1AF /* GenericViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7310715217524CD0036F1AF /* GenericViewController.swift */; };
+		C731071821753D0B0036F1AF /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C731071721753D0B0036F1AF /* CameraManager.swift */; };
+		C731071A217540420036F1AF /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7310719217540420036F1AF /* CameraViewController.swift */; };
+		C731071C21765AD50036F1AF /* CameraManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C731071B21765AD50036F1AF /* CameraManagerDelegate.swift */; };
+		C731071E21765F960036F1AF /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C731071D21765F960036F1AF /* CameraView.swift */; };
+		C731072021768AAC0036F1AF /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C731071F21768AAC0036F1AF /* FinishViewController.swift */; };
+		C7310725217697590036F1AF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7310724217697590036F1AF /* NetworkManager.swift */; };
+		C7310727217697FE0036F1AF /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7310726217697FE0036F1AF /* Configuration.swift */; };
+		C731072A2176A2000036F1AF /* Extension+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73107292176A2000036F1AF /* Extension+UIImage.swift */; };
 		DF0DA0AB4B9AEB5B1B25AD3E /* Pods_Capture_a_picture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218B088012B278AB9CC78607 /* Pods_Capture_a_picture.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +38,17 @@
 		C73107092173FA1B0036F1AF /* WellcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellcomeViewController.swift; sourceTree = "<group>"; };
 		C731070C2173FD460036F1AF /* StartupCommandsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupCommandsBuilder.swift; sourceTree = "<group>"; };
 		C731070E2173FD7D0036F1AF /* InitializeCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializeCommands.swift; sourceTree = "<group>"; };
+		C731071021751B260036F1AF /* WellcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellcomeView.swift; sourceTree = "<group>"; };
+		C731071321751E510036F1AF /* GenericView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericView.swift; sourceTree = "<group>"; };
+		C7310715217524CD0036F1AF /* GenericViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericViewController.swift; sourceTree = "<group>"; };
+		C731071721753D0B0036F1AF /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		C7310719217540420036F1AF /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		C731071B21765AD50036F1AF /* CameraManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManagerDelegate.swift; sourceTree = "<group>"; };
+		C731071D21765F960036F1AF /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		C731071F21768AAC0036F1AF /* FinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishViewController.swift; sourceTree = "<group>"; };
+		C7310724217697590036F1AF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		C7310726217697FE0036F1AF /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		C73107292176A2000036F1AF /* Extension+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImage.swift"; sourceTree = "<group>"; };
 		DAF874CA0CB334F33DF698C2 /* Pods-Capture-a-picture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capture-a-picture.release.xcconfig"; path = "Pods/Target Support Files/Pods-Capture-a-picture/Pods-Capture-a-picture.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +116,9 @@
 		C73107032173F9520036F1AF /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				C73107282176A1D70036F1AF /* Extension */,
+				C73107212176971B0036F1AF /* Network */,
+				C731071221751E3E0036F1AF /* Generic */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -112,6 +137,10 @@
 			isa = PBXGroup;
 			children = (
 				C73107092173FA1B0036F1AF /* WellcomeViewController.swift */,
+				C731071721753D0B0036F1AF /* CameraManager.swift */,
+				C731071B21765AD50036F1AF /* CameraManagerDelegate.swift */,
+				C7310719217540420036F1AF /* CameraViewController.swift */,
+				C731071F21768AAC0036F1AF /* FinishViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -119,6 +148,8 @@
 		C73107072173F9B90036F1AF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C731071021751B260036F1AF /* WellcomeView.swift */,
+				C731071D21765F960036F1AF /* CameraView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -135,8 +166,34 @@
 			children = (
 				C731070C2173FD460036F1AF /* StartupCommandsBuilder.swift */,
 				C731070E2173FD7D0036F1AF /* InitializeCommands.swift */,
+				C7310726217697FE0036F1AF /* Configuration.swift */,
 			);
 			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		C731071221751E3E0036F1AF /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				C731071321751E510036F1AF /* GenericView.swift */,
+				C7310715217524CD0036F1AF /* GenericViewController.swift */,
+			);
+			path = Generic;
+			sourceTree = "<group>";
+		};
+		C73107212176971B0036F1AF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C7310724217697590036F1AF /* NetworkManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C73107282176A1D70036F1AF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C73107292176A2000036F1AF /* Extension+UIImage.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,10 +309,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C731071421751E510036F1AF /* GenericView.swift in Sources */,
 				C731070D2173FD460036F1AF /* StartupCommandsBuilder.swift in Sources */,
+				C731071821753D0B0036F1AF /* CameraManager.swift in Sources */,
 				C731070A2173FA1B0036F1AF /* WellcomeViewController.swift in Sources */,
 				C73106F22173F8DC0036F1AF /* AppDelegate.swift in Sources */,
+				C7310727217697FE0036F1AF /* Configuration.swift in Sources */,
+				C731072021768AAC0036F1AF /* FinishViewController.swift in Sources */,
+				C731071C21765AD50036F1AF /* CameraManagerDelegate.swift in Sources */,
+				C7310716217524CD0036F1AF /* GenericViewController.swift in Sources */,
+				C731071E21765F960036F1AF /* CameraView.swift in Sources */,
+				C731072A2176A2000036F1AF /* Extension+UIImage.swift in Sources */,
+				C7310725217697590036F1AF /* NetworkManager.swift in Sources */,
 				C731070F2173FD7D0036F1AF /* InitializeCommands.swift in Sources */,
+				C731071121751B260036F1AF /* WellcomeView.swift in Sources */,
+				C731071A217540420036F1AF /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
