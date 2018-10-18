@@ -11,9 +11,9 @@ import SnapKit
 
 
 class CameraView: GenericView {
-
+    
     private(set) var previewView = UIView()
-    private(set) var captureButton = UIButton(type: UIButtonType.system)
+    private(set) var captureButton = CaptureButton(type: UIButtonType.system)
     
     private let captureButtonSize: CGFloat = 80.0
     
@@ -21,11 +21,6 @@ class CameraView: GenericView {
         
         addSubview(previewView)
         addSubview(captureButton)
-        captureButton.layer.cornerRadius = captureButtonSize / 2
-        captureButton.clipsToBounds = true
-        captureButton.backgroundColor = UIColor.white
-        captureButton.layer.borderWidth = 0.5
-        captureButton.layer.borderColor = UIColor.black.cgColor
         captureButton.bringSubview(toFront: captureButton)
     }
     
@@ -42,5 +37,5 @@ class CameraView: GenericView {
             make.width.height.equalTo(captureButtonSize)
         }
     }
-
+    
 }

@@ -10,6 +10,9 @@ import UIKit
 
 public class GenericViewController<View: GenericView>: UIViewController {
     
+    private lazy var spinner: UIActivityIndicatorView = {
+        UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    }()
     
     internal var contentView: View {
         return view as! View
@@ -34,13 +37,12 @@ public class GenericViewController<View: GenericView>: UIViewController {
     }
     
     
-    public override func viewDidLoad() {
-        
-        super.viewDidLoad()
+    internal func hideNavigationBar() -> Bool {
+        return true
     }
     
     
-    internal func hideNavigationBar() -> Bool {
+    override public var prefersStatusBarHidden: Bool {
         return true
     }
     
@@ -51,13 +53,13 @@ public class GenericViewController<View: GenericView>: UIViewController {
     
     
     private func setInterfaceOrientations() {
-    
+        
         let restricRotation = (UIApplication.shared.delegate as! AppDelegate).restrictRotation
         let newOrientation = orientation()
         if(restricRotation == newOrientation){
             return //nothing to do here
         }
-                
+        
         (UIApplication.shared.delegate as! AppDelegate).restrictRotation = newOrientation
         let value = newOrientation.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
@@ -79,5 +81,20 @@ public class GenericViewController<View: GenericView>: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-
+    
+    internal func startSpinner() {
+        
+        spinner.startAnimating()
+        view.addSubview(spinner)
+        spinner.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.centerX.equalToSuperview()
+        }
+    }
+    
+    
+    internal func stopSpinner() {
+        spinner.stopAnimating()
+    }
+    
 }

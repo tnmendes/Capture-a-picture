@@ -10,7 +10,7 @@ import UIKit
 
 public class GenericView: UIView {
     
-
+    
     public required init() {
         
         super.init(frame: CGRect.zero)
@@ -26,12 +26,8 @@ public class GenericView: UIView {
         createConstraints()
     }
     
-    
-    //internal func configureView() {}
-    
     internal func initializeUI() {}
     
     internal func createConstraints() {}
-
     
 }

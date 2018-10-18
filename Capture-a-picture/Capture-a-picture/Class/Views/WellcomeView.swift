@@ -11,26 +11,24 @@ import SnapKit
 
 
 class WellcomeView: GenericView {
-
-    private(set) var button = UIButton(type: UIButtonType.system)
     
-
+    private(set) var button = RoundedButton(type: UIButtonType.system)
+    
+    
     internal override func initializeUI() {
         
         addSubview(button)
         button.setTitle("Get started", for: .normal)
-        self.backgroundColor = UIColor.blue
+        self.backgroundColor = UIColor.white
     }
     
     
-     internal override func createConstraints() {
-
+    internal override func createConstraints() {
+        
         button.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.centerX.equalToSuperview()
         }
     }
     
-    
-
 }

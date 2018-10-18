@@ -10,21 +10,24 @@ import UIKit
 
 class SelfieViewController: GenericViewController<CameraView> {
     
-    var cameraManager: CameraManager?
-    
+    private var cameraManager: CameraManager?
+    private var isDocumentPhotoStateFinish: Bool = false
+    private var isSelfiePhotoStateFinish: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.cameraManager = CameraManager(delegate: self)
+        self.cameraManager?.setPosition(position: .front)
         self.cameraManager?.initialized()
         contentView.captureButton.addTarget(self, action: #selector(self.takePhotoTapped), for: .touchUpInside)
+        isSelfiePhotoStateFinish = false
     }
     
     
     override func viewDidAppear(_ animated: Bool) {
         
-        self.showAlertMessage(title: "Take a selfie", message: "This is the Last step")
+        self.showAlertMessage(title: "Take a selfie", message: "This is the last step")
     }
     
     override func viewDidLayoutSubviews() {
@@ -40,12 +43,29 @@ class SelfieViewController: GenericViewController<CameraView> {
     }
     
     
-    func navigateToFinish() {
+    func didUploadDocumentPhoto(state: Bool) {
         
-        let vc = FinishViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        DispatchQueue.main.async {
+            
+            if (!state) {
+                
+                self.showAlertError(message: "Failed to upload the document photo")
+            }
+            self.isDocumentPhotoStateFinish = true
+            self.navigateToFinish()
+        }
     }
     
+    
+    private func navigateToFinish() {
+        
+        if(isDocumentPhotoStateFinish && isSelfiePhotoStateFinish){
+            
+            self.stopSpinner()
+            let vc = FinishViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
 
 
@@ -60,22 +80,26 @@ extension SelfieViewController: CameraManagerDelegate{
     
     func cameraPhotoOut(capturedImage: UIImage?, error: Error?) {
         
+        guard let image = capturedImage else {
+            return
+        }
+        
         let network = NetworkManager()
-        if let image = capturedImage {
+        self.startSpinner()
+        network.performPostMultipartsOperation(image: image, filename: "selfie", completionHandler: { response in
             
-            network.performPostMultipartsOperation(image: image, completionHandler: { response in
+            DispatchQueue.main.async {
                 
                 if(response){
-                    print("Done")
+                    
+                    self.isSelfiePhotoStateFinish = true
                     self.navigateToFinish()
                 }else{
                     
-                    DispatchQueue.main.async {
-                        self.contentView.captureButton.isEnabled = true
-                        self.showAlertError(message: "Please take another photo")
-                    }
+                    self.contentView.captureButton.isEnabled = true
+                    self.showAlertError(message: "Please take another photo")
                 }
-            })
-        }
+            }
+        })
     }
 }

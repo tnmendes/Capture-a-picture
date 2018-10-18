@@ -10,9 +10,9 @@ import UIKit
 
 class CameraViewController: GenericViewController<CameraView> {
     
-    var cameraManager: CameraManager?
+    private var cameraManager: CameraManager?
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,14 +24,13 @@ class CameraViewController: GenericViewController<CameraView> {
         contentView.captureButton.addTarget(self, action: #selector(self.takePhotoTapped), for: .touchUpInside)
     }
     
-
+    
     override func orientation() -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.landscapeRight
     }
     
     
     override func viewDidLayoutSubviews() {
-        
         self.cameraManager?.didLayout()
     }
     
@@ -39,17 +38,16 @@ class CameraViewController: GenericViewController<CameraView> {
     @objc func takePhotoTapped() {
         
         contentView.captureButton.isEnabled = false
-        navigateToSelfie()
-        //self.cameraManager?.takePhoto()
+        self.cameraManager?.takePhoto()
     }
     
     
-    func navigateToSelfie() {
+    private func navigateToSelfie() -> SelfieViewController{
         
         let vc = SelfieViewController()
         self.navigationController?.pushViewController(vc, animated: true)
+        return vc
     }
-    
 }
 
 
@@ -64,17 +62,20 @@ extension CameraViewController: CameraManagerDelegate{
     
     func cameraPhotoOut(capturedImage: UIImage?, error: Error?) {
         
-        let network = NetworkManager()
-        if let image = capturedImage {
+        DispatchQueue.main.async {
             
-            network.performPostMultipartsOperation(image: image, completionHandler: { response in
+            let network = NetworkManager()
+            if let image = capturedImage {
                 
-                if(response){
-                    print("Done")
-                }else{
-                    print("error")
-                }
-            })
+                let vc = self.navigateToSelfie()
+                vc.didUploadDocumentPhoto(state: true)
+                network.performPostMultipartsOperation(image: image, filename: "document", completionHandler: { response in
+                 
+                    vc.didUploadDocumentPhoto(state: response)
+                })
+            }else{
+                self.contentView.captureButton.isEnabled = true
+            }
         }
     }
 }

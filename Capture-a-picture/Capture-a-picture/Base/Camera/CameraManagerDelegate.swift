@@ -16,4 +16,3 @@ protocol CameraManagerDelegate: class {
     func cameraPhotoOut(capturedImage:UIImage?, error: Error?)
         
 }
-

@@ -8,28 +8,29 @@
 
 import UIKit
 import AVFoundation
-import Alamofire
 
 class CameraManager: NSObject {
     
     weak var delegate: CameraManagerDelegate?
     
-    var captureSession: AVCaptureSession?
-    var videoPreviewLayer: AVCaptureVideoPreviewLayer?
-    var capturePhotoOutput: AVCapturePhotoOutput?
-    var qrCodeFrameView: UIView?
+    private var captureSession: AVCaptureSession?
+    private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    private var capturePhotoOutput: AVCapturePhotoOutput?
+    private var qrCodeFrameView: UIView?
+    private var previewView: UIView!
+    private var cameraPosition: AVCaptureDevice.Position = .back
     
-    var previewView: UIView!
     
     init(delegate: CameraManagerDelegate) {
         
         self.delegate = delegate
     }
     
-    
-    func initialized() {
+
+    public func initialized() {
         
-        guard let captureDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
+    
+        guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: cameraPosition) else {
             fatalError("No video device found")
         }
         
@@ -51,7 +52,7 @@ class CameraManager: NSObject {
             videoPreviewLayer?.frame = previewView.layer.bounds
             previewView.layer.addSublayer(videoPreviewLayer!)
             captureSession?.startRunning()
-    
+            
         } catch {
             
             print(error)
@@ -60,9 +61,14 @@ class CameraManager: NSObject {
     }
     
     
-    func getVideoPreviewLayer() -> AVCaptureVideoPreviewLayer? {
+    public func getVideoPreviewLayer() -> AVCaptureVideoPreviewLayer? {
         
         return videoPreviewLayer
+    }
+    
+    
+    public func setPosition(position: AVCaptureDevice.Position) {
+        self.cameraPosition = position
     }
     
     
@@ -90,10 +96,10 @@ extension CameraManager : AVCapturePhotoCaptureDelegate {
         
         guard error == nil else {
             print("Fail to capture photo: \(String(describing: error))")
+            self.delegate?.cameraPhotoOut(capturedImage: nil, error: error)
             return
         }
         
-        // Check if the pixel buffer could be converted to image data
         guard let imageData = photo.fileDataRepresentation() else {
             print("Fail to convert pixel buffer")
             return
@@ -105,7 +111,6 @@ extension CameraManager : AVCapturePhotoCaptureDelegate {
         }
         
         self.delegate?.cameraPhotoOut(capturedImage: capturedImage, error: nil)
-
     }
     
 }

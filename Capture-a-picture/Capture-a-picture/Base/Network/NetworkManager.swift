@@ -13,12 +13,12 @@ import Alamofire
 class NetworkManager {
 
     
-    func performPostMultipartsOperation(image: UIImage, completionHandler: @escaping (Bool) -> Void) {
+    func performPostMultipartsOperation(image: UIImage, filename: String, completionHandler: @escaping (Bool) -> Void) {
         
         Alamofire.upload(
             multipartFormData: { MultipartFormData in
                 
-                MultipartFormData.append(UIImageJPEGRepresentation(image, 0.25)!, withName: "photo", fileName: "photo.jpg", mimeType: "image/jpeg")
+                MultipartFormData.append(UIImageJPEGRepresentation(image, 0.25)!, withName: "photo", fileName: "aa"+".jpg", mimeType: "image/jpeg")
                 
         }, to: Configuration.kBucket()) { (result) in
             

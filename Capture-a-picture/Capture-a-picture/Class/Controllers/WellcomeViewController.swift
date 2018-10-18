@@ -10,33 +10,31 @@ import UIKit
 import AVFoundation
 
 class WellcomeViewController: GenericViewController<WellcomeView> {
-
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         contentView.button.addTarget(self, action: #selector(self.startTapped), for: .touchUpInside)
     }
-
+    
     
     @objc func startTapped() {
         
         AVCaptureDevice.requestAccess(for: AVMediaType.video) { response in
             
-            if response { //access granted
+            DispatchQueue.main.async {
                 
-                DispatchQueue.main.async {
-
+                if response { //access granted
+                    
                     let vc = CameraViewController()
                     self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    
+                    self.showAlertError(message: "This app need the access to Camera")
                 }
-            } else {
-                
-                self.showAlertError(message: "This app need the access to Camera")
             }
         }
     }
-    
-    
     
 }

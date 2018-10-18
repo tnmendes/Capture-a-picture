@@ -9,13 +9,18 @@
 import Foundation
 import UIKit
 
-class FinishViewController: GenericViewController<WellcomeView> {
+class FinishViewController: GenericViewController<FinishView> {
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        contentView.button.addTarget(self, action: #selector(self.starAgain), for: .touchUpInside)
     }
     
+    
+    @objc func starAgain() {
+        
+        self.navigationController?.popToRootViewController(animated: true)
+    }
 }
