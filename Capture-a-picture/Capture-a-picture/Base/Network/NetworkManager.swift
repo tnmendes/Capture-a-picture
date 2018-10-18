@@ -18,7 +18,7 @@ class NetworkManager {
         Alamofire.upload(
             multipartFormData: { MultipartFormData in
                 
-                MultipartFormData.append(UIImageJPEGRepresentation(image, 0.25)!, withName: "photo", fileName: "aa"+".jpg", mimeType: "image/jpeg")
+                MultipartFormData.append(UIImageJPEGRepresentation(image, 0.25)!, withName: "photo", fileName: filename+".jpg", mimeType: "image/jpeg")
                 
         }, to: Configuration.kBucket()) { (result) in
             
